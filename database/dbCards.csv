@@ -1,0 +1,12 @@
+nome,                       mana, cmc, tipo,                subtipo,        poder, resistencia, numeroNaColecao
+Modificação Aérea,          4W,   5,   Encantamento,        Aura,           -1,    -1,          1
+Almirante Aeronauta,        3W,   4,   Criatura,            Humano Piloto,  3,     1,           2
+Inspetor de Éter,           3W,   4,   Criatura,            Anão Artesão,   2,     3,           3
+Mineradora do Geodo Etéreo, 1W,   2,   Criatura,            Anão Batedor,   3,     1,           4
+Aeronautas de Entrega,      3WW,  5,   Criatura,            Anão Batedor,   4,     3,           5
+Evasão pelas Vielas,        W,    1,   Mágica instantânea, ,                -1,    -1,          6
+Infiltrador Audacioso,      1W,   2,   Criatura,            Anão Ladino,    3,     1,           7
+Impositora do Bastião,      2W,   3,   Criatura,            Anão Soldado,   3,     2,           8
+Chamado à Unidade,          3WW,  5,   Encantamento,        ,               -1,    -1,          9
+Pego pelos Holofotes,       2W,   3,   Encantamento,        Aura,           -1,    -1,          10
+Repressão do Consulado,     3WW,  5,   Encantamento,        ,               -1,    -1,          11
