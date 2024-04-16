@@ -1,12 +1,76 @@
-nome,                       mana, cmc, tipo,                subtipo,        poder, resistencia, numeroNaColecao
-Modificação Aérea,          4W,   5,   Encantamento,        Aura,           -1,    -1,          1
-Almirante Aeronauta,        3W,   4,   Criatura,            Humano Piloto,  3,     1,           2
-Inspetor de Éter,           3W,   4,   Criatura,            Anão Artesão,   2,     3,           3
-Mineradora do Geodo Etéreo, 1W,   2,   Criatura,            Anão Batedor,   3,     1,           4
-Aeronautas de Entrega,      3WW,  5,   Criatura,            Anão Batedor,   4,     3,           5
-Evasão pelas Vielas,        W,    1,   Mágica instantânea, ,                -1,    -1,          6
-Infiltrador Audacioso,      1W,   2,   Criatura,            Anão Ladino,    3,     1,           7
-Impositora do Bastião,      2W,   3,   Criatura,            Anão Soldado,   3,     2,           8
-Chamado à Unidade,          3WW,  5,   Encantamento,        ,               -1,    -1,          9
-Pego pelos Holofotes,       2W,   3,   Encantamento,        Aura,           -1,    -1,          10
-Repressão do Consulado,     3WW,  5,   Encantamento,        ,               -1,    -1,          11
+nome,                                   mana,    tipo,                subtipo,               poder, resistencia, raridade
+Modificação Aérea,                      4W,      Encantamento,        Aura,                  -1,    -1,          U        
+Almirante Aeronauta,                    3W,      Criatura,            Humano Piloto,         3,     1,           U        
+Inspetor de Éter,                       3W,      Criatura,            Anão Artesão,          2,     3,           C        
+Mineradora do Geodo Etéreo,             1W,      Criatura,            Anão Batedor,          3,     1,           R        
+Aeronautas de Entrega,                  3WW,     Criatura,            Anão Batedor,          4,     3,           U        
+Evasão pelas Vielas,                    W,       Mágica instantânea, ,                       -1,    -1,          C        
+Infiltrador Audacioso,                  1W,      Criatura,            Anão Ladino,           3,     1,           C        
+Impositora do Bastião,                  2W,      Criatura,            Anão Soldado,          3,     2,           C        
+Chamado à Unidade,                      3WW,     Encantamento,        ,                      -1,    -1,          R        
+Pego pelos Holofotes,                   2W,      Encantamento,        Aura,                  -1,    -1,          C        
+Repressão do Consulado,                 3WW,     Encantamento,        ,                      -1,    -1,          R        
+Convicção,                              1W,      Encantamento,        Aura,                  -1,    -1,          C        
+Renegada das Engrenagens incontáveis,   1W,      Criatura,            Anão Artesão,          2,     2,           C        
+Águia-pena-d'aurora,                    4W,      Criatura,            Ave,                   3,     3,           C        
+Arpoadora Certeira,                     2W,      Criatura,            Anão Guerreiro,        2,     2,           U        
+Descomissionar,                         2W,      Mágica instantânea,  ,                      -1,    -1,          C        
+Dispensa Hábil,                         3W,      Mágica instantânea,  ,                      -1,    -1,          U        
+Arcanjo Refinado,                       5WW,     Criatura,            Anjo,                  5,     5,           M        
+Guardião Felidar,                       3W,      Criatura,            Felino Besta,          1,     4,           U        
+Águia-pesqueira de Ghirapur,            2W,      Criatura,            Ave,                   2,     2,           C        
+Especialista em Retauração,             1W,      Criatura,            Anão Artesão,          2,     1,           U        
+Recruta Solene,                         1WW,     Criatura,            Anão Guerreiro,        2,     2,           R        
+Sram-Edificador Sênior,                 1W,      Criatura,            Anão Conselheiro,      2,     2,           R        
+Especialista de Stram,                  2WW,     Feitiço,             ,                      -1,    -1,          R        
+Prisão por Tóptero,                     2W,      Encantamento,        ,                      -1,    -1,          U        
+Planadora Etérea,                       1U,      Criatura,            Vedalkeano Artesão,    1,     2,           C        
+Baleia-da-maré-etérea,                  4UU,     Criatura,            Baleia,                6,     4,           R        
+Baral-Chefe da Conformidade,            1U,      Criatura,            Humano Mago,           1,     3,           R        
+Especialidade de Baral,                 3UU,     Feitiço,             ,                      -1,    -1,          R        
+Inventor do Bastião,                    5U,      Criatura,            Vedalkeano Artesão,    4,     4,           C        
+Dasautorizar,                           1UU,     Mágica Instantânea,  ,                      -1,    -1,          R        
+Técnico de Dispersão,                   4U,      Criatura,            Vedalkeano Artesão,    3,     2,           C        
+Construção Eficiente,                   3U,      Encantamento,        ,                      -1,    -1,          U        
+Dragonete do Interior,                  2U,      Criatura,            Dragonete,              2,     3,           C        
+Cobrir de Gelo,                         1U,      Encantamento,        Aura,                  -1,    -1,           C        
+Estratagema do Ilusionista,             3U,      Mágica Instantânea,  ,                      -1,    -1,           U        
+Dar Poeira,                             3U,      Mágica Instantânea,  ,                      -1,    -1,           C        
+Produção Mecanizada,                    2UU,     Encantamento,        Aura,                  -1,    -1,           M        
+Repreensão Metálica,                    2U,      Mágica Instantânea,  ,                      -1,    -1,           C        
+Negar,                                  1U,      Mágica Instantânea,  ,                      -1,    -1,           C        
+Espiã Veloferreira,                     3U,      Criatura,            Humano Artesão,        2,     3,            R        
+Engenheira Reversa,                     3UU,     Feitiço,             ,                      -1,    -1,           U        
+Carangueijo Reciclador,                 4U,      Criatura,            Carangueijo,           4,     4,            U            
+Ladrão de Éter Escudado,                1U,      Criatura,            Vedalkeano Artesão,    0,     4,            U
+Moreia do Naufrágio,                    3U,      Criatura,            Peixe,                 0,     5,            C
+Saqueador de Aeronaus,                  1U,      Criatura,            Humano Pirata,         2,     1,            U
+Levar Sob Custódia,                     U,       Mágica Instantânea,  ,                      -1,    -1,           C
+Maga dos Troféus,                       2U,      Criatura,            Humano Mago,           2,     2,            U
+Zumbido da Invenção,                    XUUU,    Mágica Instantânea,  ,                      -1,    -1,           R
+Salteadores Eolinos,                    4UU,     Criatura,            Humano Artesão,        4,     3,            U
+Envenenadora do Éter,                   1B,      Criatura,            Humano Artesão,        1,     1,            C
+Estrangulador das Vielas,               2B,      Criatura,            Etergênito Ladino,     2,     3,            C
+Batalha na Ponte,                       XB,      Feitiço,             ,                      -1,    -1,           R
+Finalidade Cruel,                       2B,      Mágica Instantânea,  ,                      -1,    -1,           C
+Demolição Ousada,                       2BB,     Feitiço,             ,                      -1,    -1,           C
+Salvádego Audaz,                        2B,      Criatura,            Etergênito Artesão,    2,     2,            C
+Empurrão Fatal,                         B,       Mágica Instantânea,  ,                      -1,    -1,           U
+Rebocador dos Charcos,                  6B,      Criatura,            Inseto,                5,     5,            C
+Vespa da Fundição,                      3B,      Criatura,            Inseto,                2,     3,            U
+Espreitadora da Ponte,                  B,       Criatura,            Humano Ladino,         1,     1,            C
+Etergênito Talentoso,                   BB,      Criatura,            Etergênito Vampiro,    2,     3,            U
+Sinfonadora Braçoluz,                   1B,      Criatura,            Humano Ladino,         2,     1,            R
+Maquinações de Gonti,                   B,       Encantamento,        ,                      -1,    -1,           U
+Arauto da Angústia,                     5BB,     Criatura,            Demônio,               5,     5,            M
+Revolucionário Couraçado,               4BB,     Criatura,            Etergênito Artesão,    4,     4,            U
+Comitiva da Meia-noite,                 2BB,     Criatura,            Etergênito Ladino,     3,     3,            R
+Aeronauta do Mercado Noturno,           3B,      Criatura,            Etergênito Guerreiro,  2,     2,            C
+Dilema Perigoso,                        4B,      Mágica Instantânea,  ,                      -1,    -1,           U
+Escapada doo Renegado,                  2B,      Mágica Instantânea,  ,                      -1,    -1,           C
+Retorno Engenhoso,                      1B,      Feitiço,             ,                      -1,    -1,           C
+Recuperação Secreta,                    3BB,     Feitiço,             ,                      -1,    -1,           R
+Requisitora Astuta,                     4B,      Criatura,            Humano Artesão,        2,     2,            U
+Rebelde Vingativo,                      2B,      Criatura,            Etergênito Guerreiro,  3,     2,            U
+Yahenni-Guerrilheiro Imortal,           2B,      Criatura Lendária,   Etergênito Vampiro,    2,     2,            R
+Especialidade de Yahenni,               2BB,     Feitiço,             ,                      -1,    -1,           R
