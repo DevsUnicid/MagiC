@@ -9,6 +9,7 @@ struct mCard {
     char subtipo[30];
     int poder;
     int resistencia;
+    char raridade;
     int numeroNaColecao;
     struct mCard *proximo;
 };

@@ -24,10 +24,10 @@ void adicionaCardNoDeck(struct mCard *novoCard, struct mCard *deck) {
     ultimo->proximo = novoCard;
 }
 
-struct mCard *alocaCardFromChar(char infoCard[]) {
+struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     struct mCard *pNovoCard;
 
-    char *nome, *mana, *tipo, *subtipo, *temp;
+    char *nome, *mana, *tipo, *subtipo, *temp, *raridade;
     int cmc, poder, resistencia, numeroColecao;
 
     temp = strdup(infoCard);
@@ -37,22 +37,25 @@ struct mCard *alocaCardFromChar(char infoCard[]) {
     mana = trim(buscaCampo(temp, 2));
 
     temp = strdup(infoCard);
-    cmc = atoi(buscaCampo(temp, 3));
+    cmc = calculaCMC(trim(buscaCampo(temp, 2)));
 
     temp = strdup(infoCard);
-    tipo = trim(buscaCampo(temp, 4));
+    tipo = trim(buscaCampo(temp, 3));
 
     temp = strdup(infoCard);
-    subtipo = trim(buscaCampo(temp, 5));
+    subtipo = trim(buscaCampo(temp, 4));
 
     temp = strdup(infoCard);
-    poder = atoi(buscaCampo(temp, 6));
+    poder = atoi(buscaCampo(temp, 5));
 
     temp = strdup(infoCard);
-    resistencia = atoi(buscaCampo(temp, 7));
+    resistencia = atoi(buscaCampo(temp, 6));
 
     temp = strdup(infoCard);
-    numeroColecao = atoi(buscaCampo(temp, 8));
+    raridade = trim(buscaCampo(temp, 7));
+
+    temp = strdup(infoCard);
+    numeroColecao = numeroCarta;
 
     pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
     strcpy(pNovoCard->nome, nome);
@@ -62,6 +65,7 @@ struct mCard *alocaCardFromChar(char infoCard[]) {
     strcpy(pNovoCard->subtipo, subtipo);
     pNovoCard->poder = poder;
     pNovoCard->resistencia = resistencia;
+    pNovoCard->raridade = raridade[0];
     pNovoCard->numeroNaColecao = numeroColecao;
     pNovoCard->proximo = NULL;
 
@@ -80,7 +84,8 @@ void apresentaInfoCard(struct mCard card) {
 
     printf("\n\tCusto de mana: %s (%d)", card.mana, card.cmc);
     printf("\n\t%s - %s", card.tipo, card.subtipo);
-    if (card.proximo == NULL) printf("\n\t[card.proximo == NULL]");
+    // printf("----------%s", card.raridade);
+    imprimeRaridade(card.raridade);
     printf("\n******************************\n");
 }
 

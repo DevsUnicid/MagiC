@@ -25,9 +25,9 @@ struct mCard *carregaBancoCsvEmLista() {
         }
 
         // 'if' que decide se a coleção já foi iniciada 
-        if (qtdCartas == 1) colecao = alocaCardFromChar(linhaCsv);
+        if (qtdCartas == 1) colecao = alocaCardFromChar(linhaCsv, qtdCartas);
         else {
-            novoCard = alocaCardFromChar(linhaCsv);
+            novoCard = alocaCardFromChar(linhaCsv, qtdCartas);
             adicionaCardNoDeck(novoCard, colecao);
         }
 
