@@ -73,6 +73,25 @@ struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     return pNovoCard;
 }
 
+struct mCard *listaDeCards(struct mCard *cardColecao, char raridade) {
+    int tamanhoLista = 1;
+    struct mCard *lista, *aux;
+
+    while (cardColecao->proximo != NULL) {
+        if (cardColecao->raridade == raridade) {
+            aux = deepCopy(cardColecao);
+
+            printf("\n\t%s", aux->nome);
+
+            if (lista == NULL) lista = aux;
+            else lista->proximo = aux;
+        }
+        cardColecao = cardColecao->proximo;
+    }
+
+    return lista;
+}
+
 void apresentaInfoCard(struct mCard card) {
     int cont;
     char *materia;
@@ -83,8 +102,11 @@ void apresentaInfoCard(struct mCard card) {
     }
 
     printf("\n\tCusto de mana: %s (%d)", card.mana, card.cmc);
-    printf("\n\t%s - %s", card.tipo, card.subtipo);
-    // printf("----------%s", card.raridade);
+    printf("\n\t%s", card.tipo);
+    
+    if (card.subtipo[0] != NULL && card.subtipo[0] != "")
+         printf(" - %s", card.subtipo);
+    
     imprimeRaridade(card.raridade);
     printf("\n******************************\n");
 }

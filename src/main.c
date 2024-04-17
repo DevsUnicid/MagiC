@@ -1,15 +1,19 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 #include<locale.h>
+#include<stdbool.h>
 
 #include "lib/structCard.h"
 #include "lib/manipulaLista.h"
+#include "lib/menu.h"
+#include "lib/draft.h"
 
 char PATH_DB[40] = "../database/dbCards.csv";
 
 struct mCard *carregaBancoCsvEmLista() {
     FILE *fArquivoBanco;
-    char linhaCsv[1024];
+    char linhaCsv[1024], escolhaUsuario;
     int qtdCartas = 0;
     struct mCard *novoCard, *colecao;
 
@@ -32,10 +36,45 @@ struct mCard *carregaBancoCsvEmLista() {
 
         qtdCartas++;
     }
-
-    imprimeColecao(colecao);
-
     fclose(fArquivoBanco);
+
+    menuInicial(true, true);
+    printf("\n::: ");
+
+    scanf("%c", &escolhaUsuario);
+    getchar();
+    system("@cls||clear");
+
+    while(true) {
+        if (escolhaUsuario == NULL) {
+            menuInicial(false, false);
+            printf("\n::: ");
+
+            scanf("%c", &escolhaUsuario);
+            getchar();
+        }
+
+        switch (escolhaUsuario)
+        {
+            case '1':
+                imprimeColecao(colecao);
+                printf("\n\n\n");
+                break;
+
+            case '2':
+                geraBoosters(colecao);
+                break;
+
+            case '0':
+                printf("\n\n\n\t\tObrigado por usar o MagiC. Seu simulador de draft de código aberto!\n\n\n\n\n\n\n");
+                exit(0);
+            
+            default:
+                break;
+        }
+
+        escolhaUsuario = NULL;
+    }
 
     return novoCard;
 }

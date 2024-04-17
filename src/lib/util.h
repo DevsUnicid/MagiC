@@ -58,4 +58,21 @@ int calculaCMC(char CMC[]) {
     else if (strlen(CMC) == 6) return custo + 5;
     else return custo + 6;
 }
+
+struct mCard *deepCopy(struct mCard *cardAlvo) {
+    struct mCard *pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
+
+    strcpy(pNovoCard->nome, cardAlvo->nome);
+    strcpy(pNovoCard->mana, cardAlvo->mana);
+    pNovoCard->cmc = cardAlvo->cmc;
+    strcpy(pNovoCard->tipo, cardAlvo->tipo);
+    strcpy(pNovoCard->subtipo, cardAlvo->subtipo);
+    pNovoCard->poder = cardAlvo->poder;
+    pNovoCard->resistencia = cardAlvo->resistencia;
+    pNovoCard->raridade = cardAlvo->raridade;
+    pNovoCard->numeroNaColecao = cardAlvo->numeroNaColecao;
+
+    return cardAlvo;
+}
+
 #endif
