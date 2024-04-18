@@ -69,7 +69,13 @@ void menuInicial(bool comCabecalho, bool apagaTudo) {
     // Opção 2 - Iniciar Draft
     printf("\n");
     imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
-    printf("          2 - Iniciar Draft                             ");
+    printf("          2 - Buscar cards                              ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+    // Opção 3 - Iniciar Draft
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("          3 - Iniciar Draft                             ");
     imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
 
     // Opção 0 - Sair do programa
