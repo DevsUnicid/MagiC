@@ -101,6 +101,15 @@ void apresentaInfoCard(struct mCard card) {
         printf(" %d/%d", card.poder, card.resistencia);
     }
 
+    if (card.raridade == "C")
+        printf("   {Comum}");
+    else if (card.raridade == "U")
+        printf("   {Incomum}");
+    else if (card.raridade == "R")
+        printf("   {Rara}");
+    else
+        printf("   {Mítica}");
+
     printf("\n\tCusto de mana: %s (%d)", card.mana, card.cmc);
     printf("\n\t%s", card.tipo);
     

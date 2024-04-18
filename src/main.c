@@ -85,9 +85,9 @@ int main() {
     setlocale(LC_ALL, "Portuguese");
 
     int cont;
-    struct mCard *deck, novoCard, colecao;
+    struct mCard *deck, novoCard, *colecao;
 
-    deck = carregaBancoCsvEmLista();
+    colecao = carregaBancoCsvEmLista();
 
 
     return 0;
