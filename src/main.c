@@ -60,8 +60,12 @@ struct mCard *carregaBancoCsvEmLista() {
                 imprimeColecao(colecao);
                 printf("\n\n\n");
                 break;
-
+            
             case '2':
+                // Chame o menu de busca aqui, Lucas!
+                break;
+
+            case '3':
                 geraBoosters(colecao);
                 break;
 
