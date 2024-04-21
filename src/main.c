@@ -11,11 +11,11 @@
 
 char PATH_DB[40] = "../database/dbCards.csv";
 
-struct mCard *carregaBancoCsvEmLista() {
+Mcard *carregaBancoCsvEmLista() {
     FILE *fArquivoBanco;
     char linhaCsv[1024], escolhaUsuario;
     int qtdCartas = 0;
-    struct mCard *novoCard, *colecao;
+    Mcard *novoCard, *colecao;
 
     fArquivoBanco = fopen(PATH_DB, "r");
 
@@ -89,7 +89,7 @@ int main() {
     setlocale(LC_ALL, "Portuguese");
 
     int cont;
-    struct mCard *deck, novoCard, *colecao;
+    Mcard *deck, novoCard, *colecao;
 
     colecao = carregaBancoCsvEmLista();
 

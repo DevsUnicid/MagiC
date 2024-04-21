@@ -3,6 +3,7 @@
 
 #include<string.h>
 #include<ctype.h>
+#include<time.h>
 
 char *buscaCampo(char* line, int num) {
     char* token;
@@ -59,8 +60,8 @@ int calculaCMC(char CMC[]) {
     else return custo + 6;
 }
 
-struct mCard *deepCopy(struct mCard *cardAlvo) {
-    struct mCard *pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
+Mcard *deepCopy(Mcard *cardAlvo) {
+    Mcard *pNovoCard = (Mcard *)malloc(sizeof(Mcard));
 
     strcpy(pNovoCard->nome, cardAlvo->nome);
     strcpy(pNovoCard->mana, cardAlvo->mana);
@@ -72,7 +73,24 @@ struct mCard *deepCopy(struct mCard *cardAlvo) {
     pNovoCard->raridade = cardAlvo->raridade;
     pNovoCard->numeroNaColecao = cardAlvo->numeroNaColecao;
 
-    return cardAlvo;
+    return pNovoCard;
+}
+
+void randomInteger (int qtd, int vetor[]) {
+    // Nova semente a cada chamada
+    srand( time(NULL) );
+
+    for(int i = 0; i < qtd; i++) vetor[i] = rand() % 10;
+}
+
+void liberaMemoria(Mcard *lista) {
+    Mcard *cardAtual = buscaUltimoCard(lista);
+
+    while(lista->proximo != NULL) {
+        free(cardAtual);
+        cardAtual = buscaUltimoCard(lista);
+    }
+    free(cardAtual);
 }
 
 #endif
