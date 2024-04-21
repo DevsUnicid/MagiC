@@ -6,15 +6,14 @@
 #include "structCard.h"
 #include "manipulaLista.h"
 
-Mcard *geraUmBooster(Mcard *colecao) {
-    Mcard *listaComuns = listaDeCardsPorRaridade(colecao, 'C');
-    escolheCardsAleatorio(listaComuns, 10);
+struct mCard *geraUmBooster(struct mCard *colecao) {
+    struct mCard *booster = listaDeCards(colecao, 'R');
 
-    // imprimeColecao(listaComuns);
+    imprimeColecao(booster);
 }
 
-Mcard* geraBoosters(Mcard *colecao) {
-    Mcard *teste = geraUmBooster(colecao);
+struct mCard* geraBoosters(struct mCard *colecao) {
+    struct mCard *teste = geraUmBooster(colecao);
 }
 
 

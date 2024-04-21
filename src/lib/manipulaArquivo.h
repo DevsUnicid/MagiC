@@ -8,11 +8,11 @@
 
 char PATH_DB[40] = "../database/dbCards.csv";
 
-Mcard *carregaBancoCsvEmLista() {
+struct mCard *carregaBancoCsvEmLista() {
     FILE *fArquivoBanco;
     char linhaCsv[1024];
     int qtdCartas = 0;
-    Mcard *novoCard, *colecao;
+    struct mCard *novoCard, *colecao;
 
     fArquivoBanco = fopen(PATH_DB, "r");
 

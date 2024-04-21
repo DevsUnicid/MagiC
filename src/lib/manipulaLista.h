@@ -7,8 +7,8 @@
 #include "structCard.h"
 #include "util.h"
 
-Mcard *buscaUltimoCard(Mcard *deck) {
-    Mcard *cardAux;
+struct mCard *buscaUltimoCard(struct mCard *deck) {
+    struct mCard *cardAux;
     
     cardAux = deck;
     while (cardAux->proximo != NULL) {
@@ -18,14 +18,14 @@ Mcard *buscaUltimoCard(Mcard *deck) {
     return cardAux;
 }
 
-void adicionaCardNoDeck(Mcard *novoCard, Mcard *deck) {
-    Mcard *ultimo = buscaUltimoCard(deck);
+void adicionaCardNoDeck(struct mCard *novoCard, struct mCard *deck) {
+    struct mCard *ultimo = buscaUltimoCard(deck);
 
     ultimo->proximo = novoCard;
 }
 
-Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
-    Mcard *pNovoCard;
+struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
+    struct mCard *pNovoCard;
 
     char *nome, *mana, *tipo, *subtipo, *temp, *raridade;
     int cmc, poder, resistencia, numeroColecao;
@@ -57,7 +57,7 @@ Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     temp = strdup(infoCard);
     numeroColecao = numeroCarta;
 
-    pNovoCard = (Mcard *)malloc(sizeof(Mcard));
+    pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
     strcpy(pNovoCard->nome, nome);
     strcpy(pNovoCard->mana, mana);
     pNovoCard->cmc = cmc;
@@ -97,7 +97,7 @@ Mcard *listaDeCardsPorRaridade(Mcard *cardColecao, char raridade) {
     return lista;
 }
 
-void apresentaInfoCard(Mcard card) {
+void apresentaInfoCard(struct mCard card) {
     int cont;
     char *materia;
 
@@ -125,8 +125,8 @@ void apresentaInfoCard(Mcard card) {
     printf("\n******************************\n");
 }
 
-int imprimeColecao(Mcard *colecao) {
-    Mcard *cardAtual = colecao;
+int imprimeColecao(struct mCard *colecao) {
+    struct mCard *cardAtual = colecao;
 
     if (colecao == NULL) 
         printf("\n\n\t NENHUMA CARTA FOI CADASTRADA NA COLEÇÃO");

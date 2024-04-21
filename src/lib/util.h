@@ -60,8 +60,8 @@ int calculaCMC(char CMC[]) {
     else return custo + 6;
 }
 
-Mcard *deepCopy(Mcard *cardAlvo) {
-    Mcard *pNovoCard = (Mcard *)malloc(sizeof(Mcard));
+struct mCard *deepCopy(struct mCard *cardAlvo) {
+    struct mCard *pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
 
     strcpy(pNovoCard->nome, cardAlvo->nome);
     strcpy(pNovoCard->mana, cardAlvo->mana);

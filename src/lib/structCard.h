@@ -1,7 +1,7 @@
 #ifndef STRUCTCARD_H
 #define STRUCTCARD_H
 
-typedef struct mCard {
+struct mCard {
     char nome[50];
     char mana[15];
     int cmc; // Custo de mana convertido
@@ -12,6 +12,6 @@ typedef struct mCard {
     char raridade;
     int numeroNaColecao;
     struct mCard *proximo;
-} Mcard;
+};
 
 #endif
