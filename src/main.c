@@ -11,11 +11,11 @@
 
 char PATH_DB[40] = "../database/dbCards.csv";
 
-struct mCard *carregaBancoCsvEmLista() {
+Mcard *carregaBancoCsvEmLista() {
     FILE *fArquivoBanco;
-    char linhaCsv[1024], escolhaUsuario;
+    char linhaCsv[1024];
     int qtdCartas = 0;
-    struct mCard *novoCard, *colecao;
+    Mcard *novoCard, *colecao;
 
     fArquivoBanco = fopen(PATH_DB, "r");
 
@@ -37,6 +37,19 @@ struct mCard *carregaBancoCsvEmLista() {
         qtdCartas++;
     }
     fclose(fArquivoBanco);
+
+    return colecao;
+}
+
+int main() {
+    // Localiza o código no 'Portuguese' para usarmos caracteres especiais
+    setlocale(LC_ALL, "Portuguese");
+
+    int cont;
+    char escolhaUsuario;
+    Mcard *deck, novoCard, *colecao;
+
+    colecao = carregaBancoCsvEmLista();
 
     menuInicial(true, true);
     printf("\n::: ");
@@ -79,19 +92,6 @@ struct mCard *carregaBancoCsvEmLista() {
 
         escolhaUsuario = NULL;
     }
-
-    return novoCard;
-}
-
-int main() {
-
-    // Localiza o código no 'Portuguese' para usarmos caracteres especiais
-    setlocale(LC_ALL, "Portuguese");
-
-    int cont;
-    struct mCard *deck, novoCard, *colecao;
-
-    colecao = carregaBancoCsvEmLista();
 
 
     return 0;

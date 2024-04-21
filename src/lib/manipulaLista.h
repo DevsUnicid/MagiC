@@ -7,8 +7,8 @@
 #include "structCard.h"
 #include "util.h"
 
-struct mCard *buscaUltimoCard(struct mCard *deck) {
-    struct mCard *cardAux;
+Mcard *buscaUltimoCard(Mcard *deck) {
+    Mcard *cardAux;
     
     cardAux = deck;
     while (cardAux->proximo != NULL) {
@@ -18,14 +18,14 @@ struct mCard *buscaUltimoCard(struct mCard *deck) {
     return cardAux;
 }
 
-void adicionaCardNoDeck(struct mCard *novoCard, struct mCard *deck) {
-    struct mCard *ultimo = buscaUltimoCard(deck);
+void adicionaCardNoDeck(Mcard *novoCard, Mcard *deck) {
+    Mcard *ultimo = buscaUltimoCard(deck);
 
     ultimo->proximo = novoCard;
 }
 
-struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
-    struct mCard *pNovoCard;
+Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
+    Mcard *pNovoCard;
 
     char *nome, *mana, *tipo, *subtipo, *temp, *raridade;
     int cmc, poder, resistencia, numeroColecao;
@@ -57,7 +57,7 @@ struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     temp = strdup(infoCard);
     numeroColecao = numeroCarta;
 
-    pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
+    pNovoCard = (Mcard *)malloc(sizeof(Mcard));
     strcpy(pNovoCard->nome, nome);
     strcpy(pNovoCard->mana, mana);
     pNovoCard->cmc = cmc;
@@ -73,9 +73,9 @@ struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     return pNovoCard;
 }
 
-struct mCard *listaDeCards(struct mCard *cardColecao, char raridade) {
+Mcard *listaDeCards(Mcard *cardColecao, char raridade) {
     int tamanhoLista = 1;
-    struct mCard *lista, *aux;
+    Mcard *lista, *aux;
 
     while (cardColecao->proximo != NULL) {
         if (cardColecao->raridade == raridade) {
@@ -92,7 +92,7 @@ struct mCard *listaDeCards(struct mCard *cardColecao, char raridade) {
     return lista;
 }
 
-void apresentaInfoCard(struct mCard card) {
+void apresentaInfoCard(Mcard card) {
     int cont;
     char *materia;
 
@@ -120,8 +120,8 @@ void apresentaInfoCard(struct mCard card) {
     printf("\n******************************\n");
 }
 
-int imprimeColecao(struct mCard *colecao) {
-    struct mCard *cardAtual = colecao;
+int imprimeColecao(Mcard *colecao) {
+    Mcard *cardAtual = colecao;
 
     if (colecao == NULL) 
         printf("\n\n\t NENHUMA CARTA FOI CADASTRADA NA COLEÇÃO");
@@ -130,6 +130,17 @@ int imprimeColecao(struct mCard *colecao) {
     while(cardAtual->proximo != NULL) {
         cardAtual = cardAtual->proximo;
         apresentaInfoCard(*cardAtual);
+    }
+}
+
+void escolheCardsAleatorio(Mcard *lista, int qtd) {
+    int cards[qtd];
+    Mcard *aux = lista;
+
+    randomInteger(qtd, &cards);
+
+    for (int i = 0; i < qtd ; i++) {
+        if (aux->proximo == NULL) *aux = *lista;
     }
 }
 
