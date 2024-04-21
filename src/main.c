@@ -13,7 +13,7 @@ char PATH_DB[40] = "../database/dbCards.csv";
 
 Mcard *carregaBancoCsvEmLista() {
     FILE *fArquivoBanco;
-    char linhaCsv[1024], escolhaUsuario;
+    char linhaCsv[1024];
     int qtdCartas = 0;
     Mcard *novoCard, *colecao;
 
@@ -37,6 +37,19 @@ Mcard *carregaBancoCsvEmLista() {
         qtdCartas++;
     }
     fclose(fArquivoBanco);
+
+    return novoCard;
+}
+
+int main() {
+    // Localiza o código no 'Portuguese' para usarmos caracteres especiais
+    setlocale(LC_ALL, "Portuguese");
+
+    int cont;
+    char escolhaUsuario;
+    Mcard *deck, novoCard, *colecao;
+
+    colecao = carregaBancoCsvEmLista();
 
     menuInicial(true, true);
     printf("\n::: ");
@@ -79,19 +92,6 @@ Mcard *carregaBancoCsvEmLista() {
 
         escolhaUsuario = NULL;
     }
-
-    return novoCard;
-}
-
-int main() {
-
-    // Localiza o código no 'Portuguese' para usarmos caracteres especiais
-    setlocale(LC_ALL, "Portuguese");
-
-    int cont;
-    Mcard *deck, novoCard, *colecao;
-
-    colecao = carregaBancoCsvEmLista();
 
 
     return 0;
