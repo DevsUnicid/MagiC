@@ -47,7 +47,7 @@ int main() {
 
     int cont;
     char escolhaUsuario;
-    Mcard *deck, novoCard, *colecao;
+    struct mCard *deck, novoCard, *colecao;
 
     colecao = carregaBancoCsvEmLista();
 

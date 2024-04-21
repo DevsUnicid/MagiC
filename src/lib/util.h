@@ -3,7 +3,6 @@
 
 #include<string.h>
 #include<ctype.h>
-#include<time.h>
 
 char *buscaCampo(char* line, int num) {
     char* token;
@@ -73,7 +72,7 @@ struct mCard *deepCopy(struct mCard *cardAlvo) {
     pNovoCard->raridade = cardAlvo->raridade;
     pNovoCard->numeroNaColecao = cardAlvo->numeroNaColecao;
 
-    return pNovoCard;
+    return cardAlvo;
 }
 
 void randomInteger (int qtd, int vetor[]) {
@@ -83,8 +82,8 @@ void randomInteger (int qtd, int vetor[]) {
     for(int i = 0; i < qtd; i++) vetor[i] = rand() % 10;
 }
 
-void liberaMemoria(Mcard *lista) {
-    Mcard *cardAtual = buscaUltimoCard(lista);
+void liberaMemoria(struct mCard *lista) {
+    struct mCard *cardAtual = buscaUltimoCard(lista);
 
     while(lista->proximo != NULL) {
         free(cardAtual);
