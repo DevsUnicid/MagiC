@@ -7,10 +7,9 @@
 #include "manipulaLista.h"
 
 Mcard *geraUmBooster(Mcard *colecao) {
-    Mcard *listaComuns = listaDeCardsPorRaridade(colecao, 'C');
-    escolheCardsAleatorio(listaComuns, 10);
+    Mcard *booster = listaDeCards(colecao, 'R');
 
-    // imprimeColecao(listaComuns);
+    imprimeColecao(booster);
 }
 
 Mcard* geraBoosters(Mcard *colecao) {

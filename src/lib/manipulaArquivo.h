@@ -41,6 +41,4 @@ Mcard *carregaBancoCsvEmLista() {
     return novoCard;
 }
 
-
-
 #endif

@@ -73,23 +73,18 @@ Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     return pNovoCard;
 }
 
-Mcard *listaDeCardsPorRaridade(Mcard *cardColecao, char raridade) {
+Mcard *listaDeCards(Mcard *cardColecao, char raridade) {
     int tamanhoLista = 1;
-    Mcard *lista, *aux, *auxUltimo;
+    Mcard *lista, *aux;
 
     while (cardColecao->proximo != NULL) {
         if (cardColecao->raridade == raridade) {
             aux = deepCopy(cardColecao);
 
-            if (lista->nome == NULL) {
-                lista = aux;
-                auxUltimo = aux;
-            }
-            else {
-                auxUltimo->proximo = aux;
-                auxUltimo = auxUltimo->proximo;
-            }
-            tamanhoLista++;
+            printf("\n\t%s", aux->nome);
+
+            if (lista == NULL) lista = aux;
+            else lista->proximo = aux;
         }
         cardColecao = cardColecao->proximo;
     }
@@ -106,11 +101,11 @@ void apresentaInfoCard(Mcard card) {
         printf(" %d/%d", card.poder, card.resistencia);
     }
 
-    if (card.raridade == "C" || card.raridade == 'C')
+    if (card.raridade == "C")
         printf("   {Comum}");
-    else if (card.raridade == "U" || card.raridade == 'U')
+    else if (card.raridade == "U")
         printf("   {Incomum}");
-    else if (card.raridade == "R" || card.raridade == 'R')
+    else if (card.raridade == "R")
         printf("   {Rara}");
     else
         printf("   {Mítica}");

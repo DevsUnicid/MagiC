@@ -38,7 +38,7 @@ Mcard *carregaBancoCsvEmLista() {
     }
     fclose(fArquivoBanco);
 
-    return novoCard;
+    return colecao;
 }
 
 int main() {
