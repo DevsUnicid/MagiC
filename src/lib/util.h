@@ -4,6 +4,8 @@
 #include<string.h>
 #include<ctype.h>
 
+#include "structBoosterBox.h"
+
 char *buscaCampo(char* line, int num) {
     char* token;
 
@@ -94,7 +96,14 @@ int contaTamanhoLista(Mcard *lista) {
     return contador;
 }
 
+Mbox *iniciaBoosterBox() {
+    Mbox *boosterBox = (Mbox *) malloc(sizeof(Mbox));
 
+    for (int i = 0; i < 36; i++) {
+        boosterBox->boosters[i] = NULL;
+    }
+    return boosterBox;
+}
 // void liberaMemoria(Mcard *lista) {
 //     Mcard *cardAtual = buscaUltimoCard(lista);
 

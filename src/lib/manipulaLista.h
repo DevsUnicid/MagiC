@@ -134,7 +134,6 @@ void apresentaInfoCardSimplificado(struct mCard card) {
     imprimeRaridade(card.raridade);
 }
 
-
 int imprimeColecao(struct mCard *colecao, bool simplificado) {
     struct mCard *cardAtual = colecao;
 
@@ -158,9 +157,8 @@ void escolheCardsAleatorio(Mcard *lista, int qtd, Mcard **booster) {
     int cardEscolhido, contaCards = 1;
     Mcard *auxUltimo, *aux = lista;
 
-    while(contaCards <= qtd){
-        srand(time(NULL));
-        cardEscolhido = rand() % 10;
+    while(contaCards <= qtd) {
+        cardEscolhido = rand() % 10 + 1;
 
         for (int i = 0; i < cardEscolhido ; i++) {
             aux = aux->proximo;
