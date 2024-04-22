@@ -7,8 +7,8 @@
 #include "structCard.h"
 #include "util.h"
 
-Mcard *buscaUltimoCard(Mcard *deck) {
-    Mcard *cardAux;
+struct mCard *buscaUltimoCard(struct mCard *deck) {
+    struct mCard *cardAux;
     
     cardAux = deck;
     while (cardAux->proximo != NULL) {
@@ -18,14 +18,14 @@ Mcard *buscaUltimoCard(Mcard *deck) {
     return cardAux;
 }
 
-void adicionaCardNoDeck(Mcard *novoCard, Mcard *deck) {
-    Mcard *ultimo = buscaUltimoCard(deck);
+void adicionaCardNoDeck(struct mCard *novoCard, struct mCard *deck) {
+    struct mCard *ultimo = buscaUltimoCard(deck);
 
     ultimo->proximo = novoCard;
 }
 
-Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
-    Mcard *pNovoCard;
+struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
+    struct mCard *pNovoCard;
 
     char *nome, *mana, *tipo, *subtipo, *temp, *raridade;
     int cmc, poder, resistencia, numeroColecao;
@@ -57,7 +57,7 @@ Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     temp = strdup(infoCard);
     numeroColecao = numeroCarta;
 
-    pNovoCard = (Mcard *)malloc(sizeof(Mcard));
+    pNovoCard = (struct mCard *)malloc(sizeof(struct mCard));
     strcpy(pNovoCard->nome, nome);
     strcpy(pNovoCard->mana, mana);
     pNovoCard->cmc = cmc;
@@ -73,26 +73,32 @@ Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     return pNovoCard;
 }
 
-Mcard *listaDeCards(Mcard *cardColecao, char raridade) {
+Mcard *listaDeCardsPorRaridade(Mcard *cardColecao, char raridade) {
     int tamanhoLista = 1;
-    Mcard *lista, *aux;
+    Mcard *aux, *auxUltimo, *lista = NULL;
 
     while (cardColecao->proximo != NULL) {
         if (cardColecao->raridade == raridade) {
             aux = deepCopy(cardColecao);
 
-            printf("\n\t%s", aux->nome);
-
-            if (lista == NULL) lista = aux;
-            else lista->proximo = aux;
+            if (lista == NULL) {
+                lista = aux;
+                auxUltimo = aux;
+            }
+            else {
+                auxUltimo->proximo = aux;
+                auxUltimo = auxUltimo->proximo;
+            }
+            tamanhoLista++;
         }
         cardColecao = cardColecao->proximo;
     }
+    auxUltimo->proximo = NULL;
 
     return lista;
 }
 
-void apresentaInfoCard(Mcard card) {
+void apresentaInfoCard(struct mCard card) {
     int cont;
     char *materia;
 
@@ -101,11 +107,11 @@ void apresentaInfoCard(Mcard card) {
         printf(" %d/%d", card.poder, card.resistencia);
     }
 
-    if (card.raridade == "C")
+    if (card.raridade == "C" || card.raridade == 'C')
         printf("   {Comum}");
-    else if (card.raridade == "U")
+    else if (card.raridade == "U" || card.raridade == 'U')
         printf("   {Incomum}");
-    else if (card.raridade == "R")
+    else if (card.raridade == "R" || card.raridade == 'R')
         printf("   {Rara}");
     else
         printf("   {Mítica}");
@@ -120,27 +126,53 @@ void apresentaInfoCard(Mcard card) {
     printf("\n******************************\n");
 }
 
-int imprimeColecao(Mcard *colecao) {
-    Mcard *cardAtual = colecao;
+void apresentaInfoCardSimplificado(struct mCard card) {
+    int cont;
+    char *materia;
+
+    printf("\n# %d - %s", card.numeroNaColecao, card.nome);
+    imprimeRaridade(card.raridade);
+}
+
+
+int imprimeColecao(struct mCard *colecao, bool simplificado) {
+    struct mCard *cardAtual = colecao;
 
     if (colecao == NULL) 
         printf("\n\n\t NENHUMA CARTA FOI CADASTRADA NA COLEÇÃO");
     
-    apresentaInfoCard(*colecao);
+    // Imprime primeira carta
+    if (simplificado) apresentaInfoCardSimplificado(*cardAtual);
+    else apresentaInfoCard(*cardAtual);
+
     while(cardAtual->proximo != NULL) {
         cardAtual = cardAtual->proximo;
-        apresentaInfoCard(*cardAtual);
+        
+        // Imprime demais cartas
+        if (simplificado) apresentaInfoCardSimplificado(*cardAtual);
+        else apresentaInfoCard(*cardAtual);
     }
 }
 
-void escolheCardsAleatorio(Mcard *lista, int qtd) {
-    int cards[qtd];
-    Mcard *aux = lista;
+void escolheCardsAleatorio(Mcard *lista, int qtd, Mcard **booster) {
+    int cardEscolhido, contaCards = 1;
+    Mcard *auxUltimo, *aux = lista;
 
-    randomInteger(qtd, &cards);
+    while(contaCards <= qtd){
+        srand(time(NULL));
+        cardEscolhido = rand() % 10;
 
-    for (int i = 0; i < qtd ; i++) {
-        if (aux->proximo == NULL) *aux = *lista;
+        for (int i = 0; i < cardEscolhido ; i++) {
+            aux = aux->proximo;
+            if (aux == NULL) aux = lista;
+        }
+
+        if (*booster == NULL) *booster = deepCopy(aux);
+        else {
+            auxUltimo = buscaUltimoCard(*booster);
+            auxUltimo->proximo = deepCopy(aux);
+        }
+        contaCards++;
     }
 }
 

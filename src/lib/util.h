@@ -71,16 +71,29 @@ Mcard *deepCopy(Mcard *cardAlvo) {
     pNovoCard->resistencia = cardAlvo->resistencia;
     pNovoCard->raridade = cardAlvo->raridade;
     pNovoCard->numeroNaColecao = cardAlvo->numeroNaColecao;
+    pNovoCard->proximo = NULL;
 
-    return cardAlvo;
+    return pNovoCard;
 }
 
-void randomInteger (int qtd, int vetor[]) {
+void randomArrayInt (int qtd, int vetor[]) {
     // Nova semente a cada chamada
     srand( time(NULL) );
 
     for(int i = 0; i < qtd; i++) vetor[i] = rand() % 10;
 }
+
+int contaTamanhoLista(Mcard *lista) {
+    Mcard *aux = lista;
+    int contador;
+
+    for (contador = 1; aux->proximo != NULL; contador++) {
+        aux = aux->proximo;
+    }
+
+    return contador;
+}
+
 
 // void liberaMemoria(Mcard *lista) {
 //     Mcard *cardAtual = buscaUltimoCard(lista);
