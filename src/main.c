@@ -70,7 +70,7 @@ int main() {
         switch (escolhaUsuario)
         {
             case '1':
-                imprimeColecao(colecao);
+                imprimeColecao(colecao, false);
                 printf("\n\n\n");
                 break;
             
