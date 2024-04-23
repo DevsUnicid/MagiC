@@ -4,6 +4,8 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+TAMANHO_PADRAO=80;
+
 void imprimeRepeticao(char padrao, int qtd) {
     for (int cont = 0; cont < qtd; cont++) {
         printf("%c", padrao);
@@ -18,7 +20,7 @@ void espacamentoVertical(int tamanhoPadrao) {
 }
 
 void menuInicial(bool comCabecalho, bool apagaTudo) {
-    int tamanhoPadrao = 80;
+    int tamanhoPadrao = TAMANHO_PADRAO;
 
     if (apagaTudo) system("@cls||clear");
 
@@ -94,7 +96,10 @@ void menuInicial(bool comCabecalho, bool apagaTudo) {
     printf("\n");
 }
 
-void menuPick() {}
+void menuPick() {
+    espacamentoVertical();
+    for (){}
+}
 
 void menuDeck() {}
 
