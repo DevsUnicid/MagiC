@@ -22,15 +22,17 @@ void geraUmBooster(Mcard *colecao, Mcard **booster) {
     else escolheCardsAleatorio(listaRaros, 1, booster);
 }
 
-Mcard* geraBoosters(Mcard *colecao) {
+Mbox *geraBoosters(Mcard *colecao) {
     Mbox *boosterBox = iniciaBoosterBox();
     srand((unsigned int)time(NULL));
 
     for (int i = 0; i < 3; i++) {
         geraUmBooster(colecao, &boosterBox->boosters[i]);
     }
+
+    return boosterBox;
 }
 
-
+void iniciaDraft(Mbox *boosterBox) {}
 
 #endif
