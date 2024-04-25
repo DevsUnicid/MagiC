@@ -4,6 +4,10 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+#include "buscaSequencial.h"
+
+TAMANHO_PADRAO=80;
+
 void imprimeRepeticao(char padrao, int qtd) {
     for (int cont = 0; cont < qtd; cont++) {
         printf("%c", padrao);
@@ -18,7 +22,7 @@ void espacamentoVertical(int tamanhoPadrao) {
 }
 
 void menuInicial(bool comCabecalho, bool apagaTudo) {
-    int tamanhoPadrao = 80;
+    int tamanhoPadrao = TAMANHO_PADRAO;
 
     if (apagaTudo) system("@cls||clear");
 
@@ -94,7 +98,48 @@ void menuInicial(bool comCabecalho, bool apagaTudo) {
     printf("\n");
 }
 
-void menuPick() {}
+void imprimePick(Mcard *cardAtual) {
+    printf("|| # %d\n", cardAtual->numeroNaColecao);
+    printf("|\t%s - %s", cardAtual->mana, cardAtual->tipo);
+    if (cardAtual->subtipo[0] != NULL && cardAtual->subtipo[0] != "")
+        printf(" - %s", cardAtual->subtipo);
+    
+    printf("\n|");
+    strRaridade(*cardAtual);
+    printf(" - %s", cardAtual->nome);
+
+    if(isCriatura(*cardAtual)) printf("\t%d/%d\t", cardAtual->poder, cardAtual->resistencia);
+    else printf("\t   \t");    
+}
+
+Mcard *menuPick(Mcard *boosterAtual, int numBooster) {
+    Mcard *cardAtual = boosterAtual;
+    int escolhaUsuario;
+
+    printf("\n");
+    printf("# Booster: %d ", numBooster + 1);
+    imprimeRepeticao('-', 40);
+    printf("\n");
+
+    while(cardAtual != NULL) {
+        printf("\n");
+        imprimePick(cardAtual);
+        cardAtual = cardAtual->proximo;
+        printf("\n");
+    }
+
+    printf("\n");
+    imprimeRepeticao('*', TAMANHO_PADRAO);
+    printf("\n\tQual carta você deseja escolher, como pick?\n");
+    printf("\n\t(Digite o número da carta)\n");
+    imprimeRepeticao('*', TAMANHO_PADRAO);
+    printf("\n");
+    
+    printf("::: ");
+    scanf("%d", &escolhaUsuario);
+
+    return buscaCardPorId(boosterAtual, escolhaUsuario);
+}
 
 void menuDeck() {}
 

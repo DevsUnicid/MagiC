@@ -6,6 +6,17 @@
 
 #include "structBoosterBox.h"
 
+struct mCard *buscaUltimoCard(struct mCard *deck) {
+    struct mCard *cardAux;
+    
+    cardAux = deck;
+    while (cardAux->proximo != NULL) {
+        cardAux = cardAux->proximo;
+    }
+
+    return cardAux;
+}
+
 char *buscaCampo(char* line, int num) {
     char* token;
 
@@ -61,7 +72,7 @@ int calculaCMC(char CMC[]) {
     else return custo + 6;
 }
 
-Mcard *deepCopy(Mcard *cardAlvo) {
+Mcard *deepCopyCard(Mcard *cardAlvo) {
     Mcard *pNovoCard = (Mcard *)malloc(sizeof(Mcard));
 
     strcpy(pNovoCard->nome, cardAlvo->nome);
@@ -76,6 +87,18 @@ Mcard *deepCopy(Mcard *cardAlvo) {
     pNovoCard->proximo = NULL;
 
     return pNovoCard;
+}
+
+Mcard *deepCopyBooster(Mcard *boosterAlvo) {
+    Mcard *boosterNovo = boosterNovo = deepCopyCard(boosterAlvo),
+          *auxUltimo = boosterAlvo;
+
+    while(boosterAlvo->proximo != NULL) {
+        boosterAlvo = boosterAlvo->proximo;
+        auxUltimo = buscaUltimoCard(boosterNovo);
+        auxUltimo->proximo = deepCopyCard(boosterAlvo);
+    }
+    return boosterNovo;
 }
 
 void randomArrayInt (int qtd, int vetor[]) {
@@ -106,6 +129,43 @@ Mbox *iniciaBoosterBox() {
 }
 // void liberaMemoria(Mcard *lista) {
 //     Mcard *cardAtual = buscaUltimoCard(lista);
+
+void strRaridade(Mcard card) {
+    if (card.raridade == "C" || card.raridade == 'C')
+        printf("   {Comum}");
+    else if (card.raridade == "U" || card.raridade == 'U')
+        printf("   {Incomum}");
+    else if (card.raridade == "R" || card.raridade == 'R')
+        printf("   {Rara}");
+    else
+        printf("   {Mítica}");
+}
+
+bool isCriatura(Mcard card) {
+    return card.tipo == "Criatura" || card.tipo == 'Criatura';
+}
+
+void apresentaInfoCard(Mcard card) {
+    int cont;
+    char *materia;
+
+    printf("\n# %d - %s", card.numeroNaColecao, card.nome);
+    if (card.poder != -1 && card.resistencia != -1) {
+        printf(" %d/%d", card.poder, card.resistencia);
+    }
+    
+    // Imprime raridade, dado a carta
+    strRaridade(card);
+
+    printf("\n\tCusto de mana: %s (%d)", card.mana, card.cmc);
+    printf("\n\t%s", card.tipo);
+    
+    if (card.subtipo[0] != NULL && card.subtipo[0] != "")
+         printf(" - %s", card.subtipo);
+    
+    imprimeRaridade(card.raridade);
+    printf("\n******************************\n");
+}
 
 //     while(lista->proximo != NULL) {
 //         free(cardAtual);

@@ -48,6 +48,7 @@ int main() {
     int cont;
     char escolhaUsuario;
     Mcard *deck, novoCard, *colecao;
+    Mbox *boosterBox = NULL;
 
     colecao = carregaBancoCsvEmLista();
 
@@ -79,7 +80,9 @@ int main() {
                 break;
 
             case '3':
-                geraBoosters(colecao);
+                boosterBox = geraBoosters(colecao);
+                iniciaDraft(boosterBox);
+                fflush(stdin);
                 break;
 
             case '0':
