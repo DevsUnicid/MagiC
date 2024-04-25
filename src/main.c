@@ -82,6 +82,7 @@ int main() {
             case '3':
                 boosterBox = geraBoosters(colecao);
                 iniciaDraft(boosterBox);
+                fflush(stdin);
                 break;
 
             case '0':
