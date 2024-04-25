@@ -7,17 +7,6 @@
 #include "structCard.h"
 #include "util.h"
 
-struct mCard *buscaUltimoCard(struct mCard *deck) {
-    struct mCard *cardAux;
-    
-    cardAux = deck;
-    while (cardAux->proximo != NULL) {
-        cardAux = cardAux->proximo;
-    }
-
-    return cardAux;
-}
-
 void adicionaCardNoDeck(struct mCard *novoCard, struct mCard *deck) {
     struct mCard *ultimo = buscaUltimoCard(deck);
 
@@ -79,7 +68,7 @@ Mcard *listaDeCardsPorRaridade(Mcard *cardColecao, char raridade) {
 
     while (cardColecao->proximo != NULL) {
         if (cardColecao->raridade == raridade) {
-            aux = deepCopy(cardColecao);
+            aux = deepCopyCard(cardColecao);
 
             if (lista == NULL) {
                 lista = aux;
@@ -96,34 +85,6 @@ Mcard *listaDeCardsPorRaridade(Mcard *cardColecao, char raridade) {
     auxUltimo->proximo = NULL;
 
     return lista;
-}
-
-void apresentaInfoCard(struct mCard card) {
-    int cont;
-    char *materia;
-
-    printf("\n# %d - %s", card.numeroNaColecao, card.nome);
-    if (card.poder != -1 && card.resistencia != -1) {
-        printf(" %d/%d", card.poder, card.resistencia);
-    }
-
-    if (card.raridade == "C" || card.raridade == 'C')
-        printf("   {Comum}");
-    else if (card.raridade == "U" || card.raridade == 'U')
-        printf("   {Incomum}");
-    else if (card.raridade == "R" || card.raridade == 'R')
-        printf("   {Rara}");
-    else
-        printf("   {Mítica}");
-
-    printf("\n\tCusto de mana: %s (%d)", card.mana, card.cmc);
-    printf("\n\t%s", card.tipo);
-    
-    if (card.subtipo[0] != NULL && card.subtipo[0] != "")
-         printf(" - %s", card.subtipo);
-    
-    imprimeRaridade(card.raridade);
-    printf("\n******************************\n");
 }
 
 void apresentaInfoCardSimplificado(struct mCard card) {
@@ -165,10 +126,10 @@ void escolheCardsAleatorio(Mcard *lista, int qtd, Mcard **booster) {
             if (aux == NULL) aux = lista;
         }
 
-        if (*booster == NULL) *booster = deepCopy(aux);
+        if (*booster == NULL) *booster = deepCopyCard(aux);
         else {
             auxUltimo = buscaUltimoCard(*booster);
-            auxUltimo->proximo = deepCopy(aux);
+            auxUltimo->proximo = deepCopyCard(aux);
         }
         contaCards++;
     }
