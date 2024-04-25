@@ -4,6 +4,19 @@
 #include<string.h>
 #include<ctype.h>
 
+#include "structBoosterBox.h"
+
+struct mCard *buscaUltimoCard(struct mCard *deck) {
+    struct mCard *cardAux;
+    
+    cardAux = deck;
+    while (cardAux->proximo != NULL) {
+        cardAux = cardAux->proximo;
+    }
+
+    return cardAux;
+}
+
 char *buscaCampo(char* line, int num) {
     char* token;
 
@@ -59,7 +72,7 @@ int calculaCMC(char CMC[]) {
     else return custo + 6;
 }
 
-Mcard *deepCopy(Mcard *cardAlvo) {
+Mcard *deepCopyCard(Mcard *cardAlvo) {
     Mcard *pNovoCard = (Mcard *)malloc(sizeof(Mcard));
 
     strcpy(pNovoCard->nome, cardAlvo->nome);
@@ -71,19 +84,88 @@ Mcard *deepCopy(Mcard *cardAlvo) {
     pNovoCard->resistencia = cardAlvo->resistencia;
     pNovoCard->raridade = cardAlvo->raridade;
     pNovoCard->numeroNaColecao = cardAlvo->numeroNaColecao;
+    pNovoCard->proximo = NULL;
 
-    return cardAlvo;
+    return pNovoCard;
 }
 
-void randomInteger (int qtd, int vetor[]) {
+Mcard *deepCopyBooster(Mcard *boosterAlvo) {
+    Mcard *boosterNovo = boosterNovo = deepCopyCard(boosterAlvo),
+          *auxUltimo = boosterAlvo;
+
+    while(boosterAlvo->proximo != NULL) {
+        boosterAlvo = boosterAlvo->proximo;
+        auxUltimo = buscaUltimoCard(boosterNovo);
+        auxUltimo->proximo = deepCopyCard(boosterAlvo);
+    }
+    return boosterNovo;
+}
+
+void randomArrayInt (int qtd, int vetor[]) {
     // Nova semente a cada chamada
     srand( time(NULL) );
 
     for(int i = 0; i < qtd; i++) vetor[i] = rand() % 10;
 }
 
+int contaTamanhoLista(Mcard *lista) {
+    Mcard *aux = lista;
+    int contador;
+
+    for (contador = 1; aux->proximo != NULL; contador++) {
+        aux = aux->proximo;
+    }
+
+    return contador;
+}
+
+Mbox *iniciaBoosterBox() {
+    Mbox *boosterBox = (Mbox *) malloc(sizeof(Mbox));
+
+    for (int i = 0; i < 36; i++) {
+        boosterBox->boosters[i] = NULL;
+    }
+    return boosterBox;
+}
 // void liberaMemoria(Mcard *lista) {
 //     Mcard *cardAtual = buscaUltimoCard(lista);
+
+void strRaridade(Mcard card) {
+    if (card.raridade == "C" || card.raridade == 'C')
+        printf("   {Comum}");
+    else if (card.raridade == "U" || card.raridade == 'U')
+        printf("   {Incomum}");
+    else if (card.raridade == "R" || card.raridade == 'R')
+        printf("   {Rara}");
+    else
+        printf("   {Mítica}");
+}
+
+bool isCriatura(Mcard card) {
+    return card.tipo == "Criatura" || card.tipo == 'Criatura';
+}
+
+void apresentaInfoCard(Mcard card) {
+    int cont;
+    char *materia;
+
+    printf("\n# %d - %s", card.numeroNaColecao, card.nome);
+    if (card.poder != -1 && card.resistencia != -1) {
+        printf(" %d/%d", card.poder, card.resistencia);
+    }
+    
+    // Imprime raridade, dado a carta
+    strRaridade(card);
+
+    printf("\n\tCusto de mana: %s (%d)", card.mana, card.cmc);
+    printf("\n\t%s", card.tipo);
+    
+    if (card.subtipo[0] != NULL && card.subtipo[0] != "")
+         printf(" - %s", card.subtipo);
+    
+    imprimeRaridade(card.raridade);
+    printf("\n******************************\n");
+}
 
 //     while(lista->proximo != NULL) {
 //         free(cardAtual);

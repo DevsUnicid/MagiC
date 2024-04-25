@@ -48,6 +48,7 @@ int main() {
     int cont;
     char escolhaUsuario;
     Mcard *deck, novoCard, *colecao;
+    Mbox *boosterBox = NULL;
 
     colecao = carregaBancoCsvEmLista();
 
@@ -70,7 +71,7 @@ int main() {
         switch (escolhaUsuario)
         {
             case '1':
-                imprimeColecao(colecao);
+                imprimeColecao(colecao, false);
                 printf("\n\n\n");
                 break;
             
@@ -79,7 +80,8 @@ int main() {
                 break;
 
             case '3':
-                geraBoosters(colecao);
+                boosterBox = geraBoosters(colecao);
+                iniciaDraft(boosterBox);
                 break;
 
             case '0':

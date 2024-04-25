@@ -33,9 +33,6 @@ Mcard *carregaBancoCsvEmLista() {
 
         qtdCartas++;
     }
-
-    imprimeColecao(colecao);
-
     fclose(fArquivoBanco);
 
     return novoCard;
