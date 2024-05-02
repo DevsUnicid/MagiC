@@ -77,6 +77,7 @@ int main() {
             
             case '2':
                 // Chame o menu de busca aqui, Lucas!
+                 menuBusca(true,true);
                 break;
 
             case '3':

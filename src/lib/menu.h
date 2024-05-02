@@ -139,6 +139,93 @@ Mcard *menuPick(Mcard *boosterAtual, int numBooster) {
     scanf("%d", &escolhaUsuario);
 
     return buscaCardPorId(boosterAtual, escolhaUsuario);
+    
+    void menuBusca(bool comCabecalho, bool apagaTudo){
+	imprimeRepeticao("*",10);
+	espacamentoVertical(10);
+	int tamanhoPadrao = 80;
+if (apagaTudo) system("@cls||clear");
+
+    imprimeRepeticao('*', tamanhoPadrao);
+    printf("\n");
+    imprimeRepeticao('*', tamanhoPadrao);
+
+    // Pula linha no menu (espaçamento vertical)
+    espacamentoVertical(tamanhoPadrao);
+
+    // Cabeçalho
+    if (comCabecalho) {    
+        printf("\n");
+        imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+        printf("     Esse � o menu de busca de cartas      ");
+        imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+    }
+
+    // Pula linha no menu (espaçamento vertical)
+    espacamentoVertical(tamanhoPadrao);
+    espacamentoVertical(tamanhoPadrao);
+
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("              O que deseja fazer agora?                 ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("   (Digite o n�mero correspondente a maneira que voc� pretende buscar a carta)   ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+    // Pula linha no menu (espaçamento vertical)
+    espacamentoVertical(tamanhoPadrao);
+    espacamentoVertical(tamanhoPadrao);
+
+    // Opção 1 - Nome da carta 
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("          1 - Busca pelo nome da carta                    ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+    // Opção 2 - Tipo da carta
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("          2 - Busca pelo tipo da carta                          ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+    // Opção 3 - CMC da carta
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("          3 - Busca pelo CMC da carta                           ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+
+	// Op��o 4 cor da carta
+	    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("          3 - Busca pela cor da carta                           ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    
+    // Opção 0 - Sair do programa
+    printf("\n");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+    printf("          0 - Voltar para o menu inicial                          ");
+    imprimeRepeticao('*', (tamanhoPadrao - 56)/2);
+	 
+    // Pula linha no menu (espaçamento vert ical)
+    espacamentoVertical(tamanhoPadrao);
+    espacamentoVertical(tamanhoPadrao);
+
+    // Rodapé
+    printf("\n");
+    imprimeRepeticao('*', tamanhoPadrao);
+    printf("\n");
+}
+	
+	
+	
+
+void menuPick() {
+	
+
 }
 
 void menuDeck() {}
