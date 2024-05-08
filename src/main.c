@@ -76,7 +76,8 @@ int main() {
                 break;
             
             case '2':
-                // Chame o menu de busca aqui, Lucas!
+                sistemaBusca(colecao);
+                printf("\n\n\n");
                 break;
 
             case '3':

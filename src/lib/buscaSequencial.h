@@ -15,6 +15,28 @@ Mcard *buscaCardPorId(Mcard *booster, int numeroColecao) {
     return NULL;
 }
 
+Mcard *buscaCardPorNome(Mcard *booster, char nomeCard[]) {
+    Mcard *cardAux = booster;
+
+    while (cardAux != NULL) {
+        if (strcmp(cardAux->nome, nomeCard) == 0) 
+            return deepCopyCard(cardAux);
+        cardAux = cardAux->proximo;
+    }
+    return NULL;
+}
+
+Mcard *buscaCardPorCMC(Mcard *booster, int cmcBuscado) {
+    Mcard *cardAux = booster;
+
+    while (cardAux != NULL) {
+        if (cardAux->cmc == cmcBuscado) 
+            return deepCopyCard(cardAux);
+        cardAux = cardAux->proximo;
+    }
+    return NULL;
+}
+
 
 
 #endif
