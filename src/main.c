@@ -76,13 +76,14 @@ int main() {
                 break;
             
             case '2':
-                // Chame o menu de busca aqui, Lucas!
-                 menuBusca(true,true);
+                sistemaBusca(colecao);
+                printf("\n\n\n");
                 break;
 
             case '3':
                 boosterBox = geraBoosters(colecao);
                 iniciaDraft(boosterBox);
+                fflush(stdin);
                 break;
 
             case '0':

@@ -12,46 +12,45 @@
 
 typedef struct objPilha {
   int topo;
-  int *elementos;
   Mcard *deck;
 } Pilha;
 
-void inicializar(Pilha *pilha) {
-    pilha->topo = -1;
+void pilhaInicializar(Pilha *pilha) {
     pilha->deck = (Mcard *) malloc(sizeof(Mcard));
+    pilha->topo = -1;
 }
 
-int estaVazia(Pilha *pilha) {
+int pilhaEstaVazia(Pilha *pilha) {
     return pilha->topo == -1;
 }
 
-void push(Pilha *pilha, Mcard *novoCard) {
+void pilhaPush(Pilha *pilha, Mcard *novoCard) {
     pilha->topo++;
-    pilha->deck = (Mcard *) realloc(pilha->elementos, (pilha->topo + 1) * sizeof(Mcard));
+    pilha->deck = (Mcard *) realloc(pilha->deck, (pilha->topo + 1) * sizeof(Mcard));
     pilha->deck[pilha->topo] = *novoCard;
 }
 
-Mcard *pop(Pilha *pilha) {
-    if (estaVazia(pilha)) {
+Mcard *pilhaPop(Pilha *pilha) {
+    if (pilhaEstaVazia(pilha)) {
         printf("Erro: Pilha vazia.\n");
         return NULL;
     }
 
-    Mcard cardExcluir = pilha->deck[pilha->topo];
+    Mcard *cardExcluir = deepCopyCard(&pilha->deck[pilha->topo]);
     pilha->topo--;
     pilha->deck = (Mcard *) realloc(pilha->deck, (pilha->topo + 1) * sizeof(Mcard));
-    return &cardExcluir;
+    return cardExcluir;
 }
 
-Mcard *topo(Pilha *pilha) {
-    if (estaVazia(pilha)) {
+Mcard *pilhaTopo(Pilha *pilha) {
+    if (pilhaEstaVazia(pilha)) {
         printf("Erro: Pilha vazia.\n");
         return NULL;
     }
     return &pilha->deck[pilha->topo];
 }
 
-int tamanho(Pilha *pilha) {
+int pilhaTamanho(Pilha *pilha) {
     return pilha->topo + 1;
 }
 

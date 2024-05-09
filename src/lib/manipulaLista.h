@@ -7,13 +7,13 @@
 #include "structCard.h"
 #include "util.h"
 
-void adicionaCardNoDeck(struct mCard *novoCard, struct mCard *deck) {
+void adicionaCardNoDeck(Mcard *novoCard, Mcard *deck) {
     struct mCard *ultimo = buscaUltimoCard(deck);
 
     ultimo->proximo = novoCard;
 }
 
-struct mCard *alocaCardFromChar(char infoCard[], int numeroCarta) {
+Mcard *alocaCardFromChar(char infoCard[], int numeroCarta) {
     struct mCard *pNovoCard;
 
     char *nome, *mana, *tipo, *subtipo, *temp, *raridade;
@@ -87,7 +87,7 @@ Mcard *listaDeCardsPorRaridade(Mcard *cardColecao, char raridade) {
     return lista;
 }
 
-void apresentaInfoCardSimplificado(struct mCard card) {
+void apresentaInfoCardSimplificado(Mcard card) {
     int cont;
     char *materia;
 
@@ -95,7 +95,7 @@ void apresentaInfoCardSimplificado(struct mCard card) {
     imprimeRaridade(card.raridade);
 }
 
-int imprimeColecao(struct mCard *colecao, bool simplificado) {
+int imprimeColecao(Mcard *colecao, bool simplificado) {
     struct mCard *cardAtual = colecao;
 
     if (colecao == NULL) 
