@@ -213,7 +213,8 @@ Mcard *menuPick(Mcard *boosterAtual, int numBooster) {
 }
 
 bool sistemaBusca(Mcard *colecao) {
-    char escolhaUsuario, *nomeCardBuscado;
+    char escolhaUsuario, *nomeCardBuscado, corCardBuscado;
+    int cmcEscolhido;
     bool segueEmLoop = true;
     Mcard *cardAux;
 
@@ -245,6 +246,35 @@ bool sistemaBusca(Mcard *colecao) {
 
             if (cardAux == NULL) {
                 printf("Infelizmente, não encontrei o card com o nome\n\n\t%s \n\nTente novamente.\n\n", nomeCardBuscado);
+                escolhaUsuario = NULL;
+            }
+            else imprimeColecao(cardAux, false);
+            escolhaUsuario = NULL;
+            break;
+
+        case '2':
+            printf("\n\tW = Branco \n\tU = Azul \n\tB = Preto \n\tR = Red \n\tG = Verde\n");
+            printf("\n\nDigite a cor do(s) card(s) buscado(s)::: ");
+            scanf("%c", &corCardBuscado);
+            getchar();
+            cardAux = buscaCardPorCor(colecao, corCardBuscado);
+
+            if (cardAux == NULL) {
+                printf("Infelizmente, não encontrei o card com a cor\n\n\t%s \n\nTente novamente.\n\n", corCardBuscado);
+                escolhaUsuario = NULL;
+            }
+            else imprimeColecao(cardAux, false);
+            escolhaUsuario = NULL;
+            break;
+
+
+        case '3':
+            printf("\n\nDigite o CMC (Custo de Mana Convertido) do card buscado::: ");
+            scanf("%d", &cmcEscolhido);
+            cardAux = buscaCardPorCMC(colecao, cmcEscolhido);
+
+            if (cardAux == NULL) {
+                printf("Infelizmente, não encontrei o card com o \n\n\tCMC: %d \n\nTente novamente.\n\n", cmcEscolhido);
                 escolhaUsuario = NULL;
             }
             else imprimeColecao(cardAux, false);

@@ -167,6 +167,19 @@ void apresentaInfoCard(Mcard card) {
     printf("\n******************************\n");
 }
 
+
+bool ehDaCor(Mcard *card, char cor) {
+    char manaAux[6];
+    strcpy(manaAux, card->mana);
+
+    for (int i = 0; i < 6; i++) {
+        if (manaAux[i] == cor) return true;
+    }
+    return false;
+
+
+}
+
 //     while(lista->proximo != NULL) {
 //         free(cardAtual);
 //         cardAtual = buscaUltimoCard(lista);
